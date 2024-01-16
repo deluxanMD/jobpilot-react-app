@@ -1,5 +1,5 @@
-import './App.css';
-import Stepper from './components/Stepper';
+import "./App.css";
+import Stepper from "./components/Stepper";
 
 function App() {
   return (

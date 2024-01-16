@@ -26,6 +26,10 @@
     "pretest": "npm ci && rimraf .nyc_output .cache coverage dist",
     "test:all": "start-test 3000 cy:run",
     "eject": "react-scripts eject",
+    "lint:check": "npx eslint src --ext .js,.jsx,.ts,.tsx --resolve-plugins-relative-to .",
+    "lint:fix": "npx eslint src --ext .js,.jsx,.ts,.tsx --fix --resolve-plugins-relative-to .",
+    "prettier:check": "npx prettier --check src",
+    "prettier:fix": "npx prettier --write src",
     "coverage:verify": "npx nyc report --check-coverage true --lines 100",
     "coverage:check-files": "check-coverage src/index.tsx && check-coverage src/App.tsx && check-coverage src/components/Button.tsx && check-coverage src/components/Stepper.tsx && only-covered src/index.tsx src/App.tsx src/components/Button.tsx src/components/Stepper.tsx"
   },
@@ -46,5 +50,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "eslint": "^8.56.0",
+    "eslint-plugin-react": "^7.33.2",
+    "prettier": "^3.2.2"
   }
 }
