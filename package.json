@@ -3,18 +3,25 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@cypress/code-coverage": "^3.12.18",
     "@cypress/instrument-cra": "^1.4.0",
+    "@emotion/react": "^11.11.3",
+    "@emotion/styled": "^11.11.0",
+    "@mui/icons-material": "^5.15.4",
+    "@mui/material": "^5.15.4",
+    "@mui/styled-engine-sc": "^6.0.0-alpha.12",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",
     "@testing-library/user-event": "^13.5.0",
-    "@types/jest": "^29.0.0",
     "@types/node": "^20.0.0",
     "@types/react": "^18.0.12",
     "@types/react-dom": "^18.0.5",
+    "cypress": "^13.6.2",
     "nyc": "^15.1.0",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "react-scripts": "5.0.1",
+    "styled-components": "^6.1.8",
     "typescript": "^4.7.3",
     "web-vitals": "^2.1.4"
   },
@@ -22,7 +29,11 @@
     "start": "react-scripts -r @cypress/instrument-cra start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "cy:run": "cypress run --e2e && cypress run --component",
+    "cy:ci:run": "cypress run --e2e && cypress run --component",
+    "cy:open": "cypress open --e2e",
+    "cy:run": "cypress run --e2e",
+    "ct:open": "cypress open --component",
+    "ct:run": "cypress run --component",
     "pretest": "npm ci && rimraf .nyc_output .cache coverage dist",
     "test:all": "start-test 3000 cy:run",
     "eject": "react-scripts eject",
@@ -30,8 +41,9 @@
     "lint:fix": "npx eslint src --ext .js,.jsx,.ts,.tsx --fix --resolve-plugins-relative-to .",
     "prettier:check": "npx prettier --check src",
     "prettier:fix": "npx prettier --write src",
+    "coverage:jest": "nyc npm run test -- --coverage --watchAll=false",
     "coverage:verify": "npx nyc report --check-coverage true --lines 100",
-    "coverage:check-files": "check-coverage src/index.tsx && check-coverage src/App.tsx && check-coverage src/components/Button.tsx && check-coverage src/components/Stepper.tsx && only-covered src/index.tsx src/App.tsx src/components/Button.tsx src/components/Stepper.tsx"
+    "coverage:check-files": "check-coverage src"
   },
   "eslintConfig": {
     "extends": [
@@ -52,6 +64,7 @@
     ]
   },
   "devDependencies": {
+    "@types/jest": "^29.5.11",
     "eslint": "^8.56.0",
     "eslint-plugin-react": "^7.33.2",
     "prettier": "^3.2.2"

@@ -1,8 +1,10 @@
-import React from "react";
+import { ReactNode } from "react";
 
-type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement>;
+type ButtonProps = {
+  children: ReactNode;
+};
 
-const Button: React.FC<ButtonProps> = ({ children }) => {
+const Button = ({ children }: ButtonProps) => {
   return <button>{children}</button>;
 };
 
